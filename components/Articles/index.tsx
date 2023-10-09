@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { Carousel, Container, Button, AddRemoveList, Pagination } from "../";
 import "./style.scss";
-import { getArticles, setSelectedArticles } from "../../store/dataSlice";
+import { getArticles } from "../../store/dataSlice";
 import { articlesTypes } from "../../helpers/types";
 import { makeCapitalizeFirstLetter } from "../../helpers/constants";
 import moment from "moment";
