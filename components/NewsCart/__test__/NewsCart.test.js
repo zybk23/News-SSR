@@ -86,7 +86,7 @@ describe("NewsCart", () => {
     const singleEl = document.querySelectorAll(".cart-container")[0];
     fireEvent.click(singleEl);
     await waitFor(() => {
-      const value = localStorage.getItem("sourceName");
+      const value = window.localStorage.getItem("sourceName");
       if (value) {
         expect(value).toBe("ABC News");
       } else {

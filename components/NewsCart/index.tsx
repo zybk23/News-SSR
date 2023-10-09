@@ -20,7 +20,7 @@ const NewsCart = ({ sources }: { sources: sourcesTypes[] }) => {
     dispatch(getArticles(name)).then((res: any) => {
       if (res.payload.length > 0) {
         router.push("/newsList");
-        localStorage.setItem("sourceName", name);
+        window.localStorage.setItem("sourceName", name);
       } else {
         alert("There is no articles for selected news");
       }

@@ -16,7 +16,7 @@ const AddRemoveList = ({
   setArticlesInStorage,
 }: propTypes) => {
   const handleAddRemoveReadList = () => {
-    const readList = localStorage.getItem("readList");
+    const readList = window.localStorage.getItem("readList");
     let arr: any = [];
     if (readList) {
       arr = JSON.parse(readList);
@@ -30,7 +30,7 @@ const AddRemoveList = ({
     if (arr) {
       setArticlesInStorage(arr);
     }
-    localStorage.setItem("readList", JSON.stringify(arr));
+    window.localStorage.setItem("readList", JSON.stringify(arr));
   };
   const isArticlesExistInStorage = articlesInStorage.includes(articleSourceId);
   return (

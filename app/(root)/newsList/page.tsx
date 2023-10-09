@@ -31,11 +31,11 @@ const NewsList = () => {
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
 
   const [articlesInStorage, setArticlesInStorage] = useState(
-    JSON.parse(localStorage.getItem("readList") || "[]")
+    JSON.parse(window.localStorage.getItem("readList") || "[]")
   );
 
   useEffect(() => {
-    const sourceName = localStorage.getItem("sourceName");
+    const sourceName = window.localStorage.getItem("sourceName");
     dispatch(getArticles(sourceName || ""));
   }, [dispatch]);
 
@@ -55,7 +55,7 @@ const NewsList = () => {
 
   useEffect(() => {
     let interval = setInterval(() => {
-      const sourceName = localStorage.getItem("sourceName");
+      const sourceName = window.localStorage.getItem("sourceName");
       dispatch(getArticles(sourceName || ""));
     }, 60000);
     return () => {
