@@ -1,6 +1,5 @@
 "use client";
 
-import React, { useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { setSearch } from "../../store/dataSlice";
 
