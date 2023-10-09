@@ -33,7 +33,8 @@ const Articles = ({ articles }: { articles: articlesTypes[] }) => {
   };
 
   const handleSelectedArticle = (article: articlesTypes) => {
-    dispatch(setSelectedArticles(article));
+    // dispatch(setSelectedArticles(article));
+    localStorage.setItem("selectedArticle", JSON.stringify(article));
     router.push("/newsDetails");
   };
 

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useAppSelector } from "../../store/hooks";
 import { Button, AddRemoveList } from "../../components";
@@ -10,16 +10,26 @@ import "./style.scss";
 
 const NewsDetailPage = () => {
   const router = useRouter();
+  const [selectedArticle, setSelectedArticle] = useState<articlesTypes>({});
   const [articlesInStorage, setArticlesInStorage] = useState(
     typeof window !== "undefined" &&
       JSON.parse(window.localStorage.getItem("readList") || "[]")
   );
-  const { selectedArticle }: { selectedArticle: articlesTypes } =
-    useAppSelector((state) => state.dataSlice);
+  // const { selectedArticle }: { selectedArticle: articlesTypes } =
+  //   useAppSelector((state) => state.dataSlice);
 
   const handleGoBackToListPage = () => {
     router.back();
   };
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const selected = JSON.parse(
+        window.localStorage.getItem("selectedArticle") || "{}"
+      );
+      setSelectedArticle(selected);
+    }
+  }, []);
 
   return (
     <div className="detail-page-container">
