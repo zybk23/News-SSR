@@ -17,14 +17,9 @@ const NewsCart = ({ sources }: { sources: sourcesTypes[] }) => {
   );
 
   const handleOpenNewsDetail = (name: string) => {
-    dispatch(getArticles(name)).then((res: any) => {
-      if (res.payload.length > 0) {
-        router.push("/newsList");
-        window.localStorage.setItem("sourceName", name);
-      } else {
-        alert("There is no articles for selected news");
-      }
-    });
+    const modifiedName = name.split(" ").join("-");
+    router.push(`/newsList/${modifiedName}`);
+    window.localStorage.setItem("sourceName", name);
   };
   let filteredSources = [...sources];
 
@@ -48,7 +43,7 @@ const NewsCart = ({ sources }: { sources: sourcesTypes[] }) => {
           <span className="title">{source.name}</span>
           <div className="description-area">
             <span>{source.description}</span>
-            <img src={require("/images/next.png")} alt="" />
+            <img src="/images/next.png" alt="" />
           </div>
         </div>
       ))}

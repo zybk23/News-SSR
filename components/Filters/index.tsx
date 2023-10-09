@@ -32,11 +32,11 @@ const Filters = ({ categories }: { categories: categoriesTypes[] }) => {
             }`}
           >
             <img
-              src={require(`/images/${
+              src={`/images/${
                 selectedCategories && selectedCategories.includes(category.name)
                   ? "check"
                   : "add"
-              }.png`)}
+              }.png`}
               alt=""
             />
             <span className="category-name">{category.name}</span>

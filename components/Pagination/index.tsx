@@ -31,7 +31,7 @@ const Pagination = ({ currentPage, setCurrentPage, pages }: paginationType) => {
       <div className="pagination-container">
         <div className="prev-button-container" onClick={handleClickPrevButton}>
           <img
-            src={require("/images/left-arrow.png")}
+            src="/images/left-arrow.png"
             className={`prev-icon ${currentPage === 1 ? "disable" : ""}`}
             alt=""
           />
@@ -60,7 +60,7 @@ const Pagination = ({ currentPage, setCurrentPage, pages }: paginationType) => {
           </div>
 
           <img
-            src={require("/images/right-arrow.png")}
+            src="/images/right-arrow.png"
             className={`prev-icon ${currentPage === 1 ? "disable" : ""}`}
             alt=""
           />

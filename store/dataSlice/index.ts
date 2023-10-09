@@ -14,9 +14,9 @@ import {
 import moment from "moment";
 
 export const getNews = createAsyncThunk("data/getNews", async () => {
-  const response = await fetch(
-    `https://newsapi.org/v2/sources?apiKey=c2ea8b306ade46959013772f6e5ca9bd`
-  )
+  console.log("taha geldi");
+
+  const response = await fetch(`${baseApiUrl}/sources?apiKey=${apiKey}`)
     .then((res) => res.json())
     .then((result) => result);
   return response.sources;
@@ -60,6 +60,8 @@ export const dataSlice = createSlice({
       state: stateType,
       action: PayloadAction<string>
     ) => {
+      console.log("payload", action.payload);
+
       const isCategoryExist = state.selectedCategories.find(
         (item) => item === action.payload
       );
@@ -80,7 +82,7 @@ export const dataSlice = createSlice({
     ) => {
       state.selectedArticle = action.payload;
     },
-    setSearch: (state: stateType, action: PayloadAction<any>) => {
+    setSearch: (state: stateType, action: PayloadAction<string>) => {
       state.search = action.payload;
     },
   },

@@ -1,28 +1,21 @@
 "use client";
 
 import { useEffect, useState } from "react";
-// import { useNavigate } from "react-router-dom";
-import { useAppDispatch, useAppSelector } from "../../../store/hooks";
-import {
-  Carousel,
-  Container,
-  Button,
-  AddRemoveList,
-  Pagination,
-} from "../../../components";
+import { useRouter } from "next/navigation";
+import { useAppDispatch, useAppSelector } from "../../store/hooks";
+import { Carousel, Container, Button, AddRemoveList, Pagination } from "../";
 import "./style.scss";
-import { getArticles, setSelectedArticles } from "../../../store/dataSlice";
-import { articlesTypes } from "../../../helpers/types";
-import { makeCapitalizeFirstLetter } from "../../../helpers/constants";
+import { getArticles, setSelectedArticles } from "../../store/dataSlice";
+import { articlesTypes } from "../../helpers/types";
+import { makeCapitalizeFirstLetter } from "../../helpers/constants";
 import moment from "moment";
 
-const NewsList = () => {
-  // const navigate = useNavigate();
+const Articles = ({ articles }: { articles: articlesTypes[] }) => {
+  const router = useRouter();
+
   const dispatch = useAppDispatch();
   const [currentPage, setCurrentPage] = useState(1);
-  const { articles, selectedCategories } = useAppSelector(
-    (state) => state.dataSlice
-  );
+  const { selectedCategories } = useAppSelector((state) => state.dataSlice);
 
   let itemsPerPage = 8;
   const pages = [];
@@ -41,12 +34,12 @@ const NewsList = () => {
   }, [dispatch]);
 
   const handleGoBackToNewsPage = () => {
-    // navigate("/");
+    router.push("/");
   };
 
   const handleSelectedArticle = (article: articlesTypes) => {
     dispatch(setSelectedArticles(article));
-    // navigate("/details");
+    router.push("/newsDetails");
   };
 
   for (let i = 1; i <= Math.ceil(articles.length / itemsPerPage); i++) {
@@ -114,4 +107,4 @@ const NewsList = () => {
   );
 };
 
-export default NewsList;
+export default Articles;

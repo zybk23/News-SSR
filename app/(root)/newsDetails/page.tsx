@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-// import { useNavigate } from "react-router-dom";
+import { useRouter } from "next/navigation";
 import { useAppSelector } from "../../../store/hooks";
 import { Button, AddRemoveList } from "../../../components";
 import { articlesTypes } from "../../../helpers/types";
@@ -9,7 +9,7 @@ import moment from "moment";
 import "./style.scss";
 
 const NewsDetail = () => {
-  // const navigate = useNavigate();
+  const router = useRouter();
   const [articlesInStorage, setArticlesInStorage] = useState(
     typeof window !== "undefined" &&
       JSON.parse(window.localStorage.getItem("readList") || "[]")
@@ -18,7 +18,7 @@ const NewsDetail = () => {
     useAppSelector((state) => state.dataSlice);
 
   const handleGoBackToListPage = () => {
-    // navigate("/list");
+    router.back();
   };
 
   return (

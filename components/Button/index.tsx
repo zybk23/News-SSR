@@ -11,7 +11,7 @@ interface buttonType {
 const Button = ({ handleGoBack, text }: buttonType) => {
   return (
     <div onClick={handleGoBack} className="header-button-container">
-      <img src={require("/images/left-chevron.png")} alt="" />
+      <img src="/images/left-chevron.png" alt="" />
       <span>{text}</span>
     </div>
   );

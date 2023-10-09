@@ -38,9 +38,7 @@ const AddRemoveList = ({
     <div className="button-container">
       <div onClick={handleAddRemoveReadList} className="left-side">
         <img
-          src={require(`/images/${
-            isArticlesExistInStorage ? "delete" : "add"
-          }.png`)}
+          src={`/images/${isArticlesExistInStorage ? "delete" : "add"}.png`}
           alt=""
         />
         <span>{isArticlesExistInStorage ? "Remove" : "Add"} my read list</span>

@@ -1,6 +1,6 @@
 /* eslint-disable jest/no-conditional-expect */
 /* eslint-disable testing-library/no-node-access */
-import Filters from "..";
+import Filters from "../index";
 import { render, fireEvent } from "@testing-library/react";
 import { Provider } from "react-redux";
 import thunk from "redux-thunk";

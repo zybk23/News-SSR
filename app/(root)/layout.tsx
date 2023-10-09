@@ -1,8 +1,8 @@
 "use client";
-import { Inter } from "next/font/google";
 import { Provider } from "react-redux";
 import { Navigation } from "@/components";
 import store from "../../store";
+import "../globals.css";
 
 export default function RootLayout({
   children,
