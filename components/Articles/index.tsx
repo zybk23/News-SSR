@@ -46,7 +46,6 @@ const Articles = ({ articles }: { articles: articlesTypes[] }) => {
     let interval = setInterval(() => {
       const sourceName = window.localStorage.getItem("sourceName");
       dispatch(getArticles(sourceName || ""));
-      router.reload();
     }, 60000);
     return () => {
       clearInterval(interval);
