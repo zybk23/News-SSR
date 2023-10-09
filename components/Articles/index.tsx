@@ -28,11 +28,6 @@ const Articles = ({ articles }: { articles: articlesTypes[] }) => {
       JSON.parse(window.localStorage.getItem("readList") || "[]")
   );
 
-  useEffect(() => {
-    const sourceName = window.localStorage.getItem("sourceName");
-    dispatch(getArticles(sourceName || ""));
-  }, [dispatch]);
-
   const handleGoBackToNewsPage = () => {
     router.push("/");
   };
@@ -51,6 +46,7 @@ const Articles = ({ articles }: { articles: articlesTypes[] }) => {
     let interval = setInterval(() => {
       const sourceName = window.localStorage.getItem("sourceName");
       dispatch(getArticles(sourceName || ""));
+      router.reload();
     }, 60000);
     return () => {
       clearInterval(interval);

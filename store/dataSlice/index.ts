@@ -14,8 +14,6 @@ import {
 import moment from "moment";
 
 export const getNews = createAsyncThunk("data/getNews", async () => {
-  console.log("taha geldi");
-
   const response = await fetch(`${baseApiUrl}/sources?apiKey=${apiKey}`)
     .then((res) => res.json())
     .then((result) => result);
@@ -60,8 +58,6 @@ export const dataSlice = createSlice({
       state: stateType,
       action: PayloadAction<string>
     ) => {
-      console.log("payload", action.payload);
-
       const isCategoryExist = state.selectedCategories.find(
         (item) => item === action.payload
       );

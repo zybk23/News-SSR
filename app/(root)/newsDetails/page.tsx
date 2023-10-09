@@ -1,7 +1,15 @@
-import NewsDetailPage from "@/components/News-Detail";
+import dynamic from "next/dynamic";
 
-const NewsDetail = () => {
-  return <NewsDetailPage />;
+const NoSSR = dynamic(() => import("../../../components/News-Detail/"), {
+  ssr: false,
+});
+
+const NewsDetail = async () => {
+  return (
+    <div>
+      <NoSSR />
+    </div>
+  );
 };
 
 export default NewsDetail;
