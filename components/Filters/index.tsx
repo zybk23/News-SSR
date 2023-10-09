@@ -26,12 +26,16 @@ const Filters = ({ categories }: { categories: categoriesTypes[] }) => {
             key={category.id}
             onClick={() => handleSelectCategories(category.name)}
             className={`filter-item-container ${
-              selectedCategories.includes(category.name) ? "selected" : ""
+              selectedCategories && selectedCategories.includes(category.name)
+                ? "selected"
+                : ""
             }`}
           >
             <img
               src={require(`/images/${
-                selectedCategories.includes(category.name) ? "check" : "add"
+                selectedCategories && selectedCategories.includes(category.name)
+                  ? "check"
+                  : "add"
               }.png`)}
               alt=""
             />

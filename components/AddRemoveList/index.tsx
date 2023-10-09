@@ -32,7 +32,8 @@ const AddRemoveList = ({
     }
     window.localStorage.setItem("readList", JSON.stringify(arr));
   };
-  const isArticlesExistInStorage = articlesInStorage.includes(articleSourceId);
+  const isArticlesExistInStorage =
+    articlesInStorage && articlesInStorage.includes(articleSourceId);
   return (
     <div className="button-container">
       <div onClick={handleAddRemoveReadList} className="left-side">
