@@ -31,7 +31,8 @@ const NewsList = () => {
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
 
   const [articlesInStorage, setArticlesInStorage] = useState(
-    JSON.parse(window.localStorage.getItem("readList") || "[]")
+    typeof window !== "undefined" &&
+      JSON.parse(window.localStorage.getItem("readList") || "[]")
   );
 
   useEffect(() => {

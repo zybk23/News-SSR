@@ -11,7 +11,8 @@ import "./style.scss";
 const NewsDetail = () => {
   // const navigate = useNavigate();
   const [articlesInStorage, setArticlesInStorage] = useState(
-    JSON.parse(window.localStorage.getItem("readList") || "[]")
+    typeof window !== "undefined" &&
+      JSON.parse(window.localStorage.getItem("readList") || "[]")
   );
   const { selectedArticle }: { selectedArticle: articlesTypes } =
     useAppSelector((state) => state.dataSlice);
