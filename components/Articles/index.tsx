@@ -33,7 +33,6 @@ const Articles = ({ articles }: { articles: articlesTypes[] }) => {
   };
 
   const handleSelectedArticle = (article: articlesTypes) => {
-    // dispatch(setSelectedArticles(article));
     localStorage.setItem("selectedArticle", JSON.stringify(article));
     router.push("/newsDetails");
   };
@@ -63,34 +62,44 @@ const Articles = ({ articles }: { articles: articlesTypes[] }) => {
       />
 
       <Container>
-        <div className="news-item-container">
-          <div className="header">
-            <span className="header-title">
-              {makeCapitalizeFirstLetter(selectedCategories).join(" + ")}
-            </span>
-            <Button text="Go to News" handleGoBack={handleGoBackToNewsPage} />
-          </div>
-          <div className="articles-container">
-            {filteredArticles.map((article: articlesTypes | any, index) => (
-              <div key={index} className="single-item-container">
-                <div onClick={() => handleSelectedArticle(article)}>
-                  <img src={article.urlToImage} alt="" className="item-img" />
-                  <p className="title">
-                    {article?.title?.length > 20
-                      ? article?.title?.slice(0, 20) + "..."
-                      : article?.title}
-                  </p>
+        {filteredArticles.length > 0 ? (
+          <div className="news-item-container">
+            <div className="header">
+              <span className="header-title">
+                {makeCapitalizeFirstLetter(selectedCategories).join(" + ")}
+              </span>
+              <Button text="Go to News" handleGoBack={handleGoBackToNewsPage} />
+            </div>
+            <div className="articles-container">
+              {filteredArticles.map((article: articlesTypes | any, index) => (
+                <div key={index} className="single-item-container">
+                  <div onClick={() => handleSelectedArticle(article)}>
+                    <img src={article.urlToImage} alt="" className="item-img" />
+                    <p className="title">
+                      {article?.title?.length > 20
+                        ? article?.title?.slice(0, 20) + "..."
+                        : article?.title}
+                    </p>
+                  </div>
+                  <AddRemoveList
+                    hour={moment(article.publishedAt).format("hh:mm")}
+                    articleSourceId={article.source.id + "-" + article.id}
+                    articlesInStorage={articlesInStorage}
+                    setArticlesInStorage={setArticlesInStorage}
+                  />
                 </div>
-                <AddRemoveList
-                  hour={moment(article.publishedAt).format("hh:mm")}
-                  articleSourceId={article.source.id + "-" + article.id}
-                  articlesInStorage={articlesInStorage}
-                  setArticlesInStorage={setArticlesInStorage}
-                />
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
-        </div>
+        ) : (
+          <div className="warning-container">
+            <Button text="Go to News" handleGoBack={handleGoBackToNewsPage} />
+            <div className="warning">
+              <img src="/images/warning.png" alt="" />
+              <span>There no article in selected news</span>
+            </div>
+          </div>
+        )}
       </Container>
       {pages.length > 1 && (
         <Pagination

@@ -3,12 +3,10 @@
 import { useRouter } from "next/navigation";
 import "./style.scss";
 import { sourcesTypes } from "../../helpers/types";
-import { getArticles } from "../../store/dataSlice";
-import { useAppDispatch, useAppSelector } from "../../store/hooks";
+import { useAppSelector } from "../../store/hooks";
 
 const NewsCart = ({ sources }: { sources: sourcesTypes[] }) => {
   const router = useRouter();
-  const dispatch = useAppDispatch();
   const {
     selectedCategories,
     search,

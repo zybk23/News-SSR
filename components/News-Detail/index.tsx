@@ -2,7 +2,6 @@
 
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { useAppSelector } from "../../store/hooks";
 import { Button, AddRemoveList } from "../../components";
 import { articlesTypes } from "../../helpers/types";
 import moment from "moment";
@@ -15,11 +14,12 @@ const NewsDetailPage = () => {
     typeof window !== "undefined" &&
       JSON.parse(window.localStorage.getItem("readList") || "[]")
   );
-  // const { selectedArticle }: { selectedArticle: articlesTypes } =
-  //   useAppSelector((state) => state.dataSlice);
 
   const handleGoBackToListPage = () => {
-    router.back();
+    if (typeof window !== "undefined") {
+      const articleName: any = window.localStorage.getItem("sourceName");
+      router.push(`/newsList/${articleName.split(" ").join("-")}`);
+    }
   };
 
   useEffect(() => {
