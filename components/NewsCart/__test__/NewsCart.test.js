@@ -63,6 +63,10 @@ const AppWrapper = () => {
 
 jest.mock("axios");
 
+jest.mock('next/navigation', () => ({
+  useRouter: jest.fn()
+}))
+
 const mockGetItem = jest.fn();
 const mockSetItem = jest.fn();
 const mockRemoveItem = jest.fn();
@@ -76,6 +80,7 @@ Object.defineProperty(window, "localStorage", {
 
 describe("NewsCart", () => {
   it("is component rendered", () => {
+
     render(<AppWrapper />);
     const sourceEl = document.querySelectorAll(".cart-container");
     expect(sourceEl[0]).toBeInTheDocument();

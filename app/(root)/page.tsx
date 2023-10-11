@@ -2,7 +2,7 @@ import React, { CSSProperties } from "react";
 import ClipLoader from "react-spinners/ClipLoader";
 import { getNews } from "../../store/dataSlice";
 import { Container, Filters, NewsCart } from "../../components";
-import Search from "@/components/Search";
+import Search from "../../components/Search";
 import "./style.scss";
 import store from "../../store";
 
