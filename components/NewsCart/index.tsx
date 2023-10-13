@@ -10,7 +10,6 @@ const NewsCart = ({ sources }: { sources: sourcesTypes[] }) => {
   const selectedCategories: string[] = useAppSelector(
     (state) => state?.dataSlice?.selectedCategories
   );
-  console.log("zeybek", selectedCategories);
 
   const search: string = useAppSelector((state) => state?.dataSlice?.search);
   const handleOpenNewsDetail = (name: string) => {
@@ -29,7 +28,6 @@ const NewsCart = ({ sources }: { sources: sourcesTypes[] }) => {
   filteredSources = filteredSources.filter((item: sourcesTypes) => {
     return item?.name?.toLowerCase().indexOf(search?.toLowerCase()) !== -1;
   });
-  console.log("tahaa", filteredSources);
 
   return (
     <div className="news-item-container">
