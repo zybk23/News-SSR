@@ -45,7 +45,23 @@ const Articles = ({ articles }: { articles: articlesTypes[] }) => {
   useEffect(() => {
     let interval = setInterval(() => {
       const sourceName = window.localStorage.getItem("sourceName");
-      dispatch(getArticles(sourceName || ""));
+      dispatch(getArticles(sourceName || "")).then((article: any) => {
+        function getDifference(
+          array1: articlesTypes[],
+          array2: articlesTypes[]
+        ) {
+          return array1.filter((object1) => {
+            return !array2.some((object2) => {
+              return object1.title === object2.title;
+            });
+          });
+        }
+
+        const difference = getDifference(article.payload, articles);
+        if (difference.length > 0) {
+          router.refresh();
+        }
+      });
     }, 60000);
     return () => {
       clearInterval(interval);

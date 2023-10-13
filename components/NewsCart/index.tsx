@@ -7,13 +7,12 @@ import { useAppSelector } from "../../store/hooks";
 
 const NewsCart = ({ sources }: { sources: sourcesTypes[] }) => {
   const router = useRouter();
-  const {
-    selectedCategories,
-    search,
-  }: { selectedCategories: string[]; search: string } = useAppSelector(
-    (state) => state.dataSlice
+  const selectedCategories: string[] = useAppSelector(
+    (state) => state?.dataSlice?.selectedCategories
   );
+  console.log("zeybek", selectedCategories);
 
+  const search: string = useAppSelector((state) => state?.dataSlice?.search);
   const handleOpenNewsDetail = (name: string) => {
     const modifiedName = name.split(" ").join("-");
     router.push(`/newsList/${modifiedName}`);
@@ -21,15 +20,17 @@ const NewsCart = ({ sources }: { sources: sourcesTypes[] }) => {
   };
   let filteredSources = [...sources];
 
-  if (selectedCategories.length > 0) {
+  if (selectedCategories?.length > 0) {
     filteredSources = filteredSources.filter((x: sourcesTypes) => {
       return selectedCategories.find((k) => k === x.category);
     });
   }
 
   filteredSources = filteredSources.filter((item: sourcesTypes) => {
-    return item?.name?.toLowerCase().indexOf(search.toLowerCase()) !== -1;
+    return item?.name?.toLowerCase().indexOf(search?.toLowerCase()) !== -1;
   });
+  console.log("tahaa", filteredSources);
+
   return (
     <div className="news-item-container">
       {filteredSources.map((source) => (
