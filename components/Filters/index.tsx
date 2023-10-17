@@ -5,6 +5,7 @@ import "./style.scss";
 import { categoriesTypes } from "../../helpers/types";
 import { setSelectedCategories } from "../../store/dataSlice";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
+import { makeCapitalizeFirstLetterSingleItem } from "../../helpers/constants";
 
 const Filters = ({ categories }: { categories: categoriesTypes[] }) => {
   const dispatch = useAppDispatch();
@@ -40,7 +41,9 @@ const Filters = ({ categories }: { categories: categoriesTypes[] }) => {
               }.png`}
               alt=""
             />
-            <span className="category-name">{category.name}</span>
+            <span className="category-name">
+              {makeCapitalizeFirstLetterSingleItem(category.name)}
+            </span>
             <span>({category.count})</span>
           </div>
         ))}

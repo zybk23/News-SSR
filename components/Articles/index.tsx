@@ -92,8 +92,8 @@ const Articles = ({ articles }: { articles: articlesTypes[] }) => {
                   <div onClick={() => handleSelectedArticle(article)}>
                     <img src={article.urlToImage} alt="" className="item-img" />
                     <p className="title">
-                      {article?.title?.length > 20
-                        ? article?.title?.slice(0, 20) + "..."
+                      {article?.title?.length > 36
+                        ? article?.title?.slice(0, 36) + "..."
                         : article?.title}
                     </p>
                   </div>

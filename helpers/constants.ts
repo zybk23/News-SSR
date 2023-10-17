@@ -19,3 +19,14 @@ export const makeCapitalizeFirstLetter = (arr: any) => {
   });
   return capitalizedArr;
 };
+
+export const makeCapitalizeFirstLetterSingleItem = (item: string) => {
+  const firstLetter = item.charAt(0);
+
+  const firstLetterCap = firstLetter.toUpperCase();
+
+  const remainingLetters = item.slice(1);
+
+  const capitalizedWord = firstLetterCap + remainingLetters;
+  return capitalizedWord;
+};

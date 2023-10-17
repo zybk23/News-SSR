@@ -30,6 +30,9 @@
       height: 421px;
       margin-top: 15px;
       border-radius: 10px;
+      @media screen and (max-width: 480px) {
+        height: 227px;
+      }
     }
 
     .detail-content {

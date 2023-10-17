@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import Slider from "react-slick";
 import moment from "moment";
 import { Container, AddRemoveList } from "../";
@@ -51,17 +52,34 @@ const Carousel = ({
     ],
   };
 
+  const [windowSize, setWindowSize] = useState(window.innerWidth);
+
+  useEffect(() => {
+    const handleWindowResize = () => {
+      setWindowSize(window.innerWidth);
+    };
+
+    window.addEventListener("resize", handleWindowResize);
+
+    return () => {
+      window.removeEventListener("resize", handleWindowResize);
+    };
+  }, []);
+
+  const slicedArticles =
+    windowSize > 480 ? articles.slice(0, 9) : articles.slice(0, 3);
+
   return (
     <div className="slide-container">
       <Container>
         <Slider autoplay className="slide" {...settings}>
-          {articles.map((article: any, index) => (
+          {slicedArticles.map((article: any, index) => (
             <div key={index} className="slide-item-container">
               <div onClick={() => handleSelectedArticle(article)}>
                 <img src={article.urlToImage} alt="" className="slide-img" />
                 <p className="title">
-                  {article?.title?.length > 20
-                    ? article?.title?.slice(0, 20) + "..."
+                  {article?.title?.length > 36
+                    ? article?.title?.slice(0, 36) + "..."
                     : article?.title}
                 </p>
                 <p className="description">

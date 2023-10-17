@@ -6,6 +6,8 @@ $color-blue: #052c54;
   align-items: center;
   width: auto;
   overflow: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 
   .title-container {
     width: 80px;
@@ -47,6 +49,7 @@ $color-blue: #052c54;
       @media screen and (max-width: 768px) {
         width: auto;
         padding-right: 24px;
+        height: 36px;
       }
 
       &.selected {
@@ -72,6 +75,10 @@ $color-blue: #052c54;
         font-size: 14px;
         line-height: 22px;
         color: $color-blue;
+
+        @media screen and (max-width: 768px) {
+          font-size: 13px;
+        }
 
         &.category-name {
           margin-left: 4px;
