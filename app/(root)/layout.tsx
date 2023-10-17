@@ -1,6 +1,6 @@
 "use client";
 import { Provider } from "react-redux";
-import { Navigation } from "@/components";
+import { Navigation } from "../../components";
 import store from "../../store";
 import "../globals.css";
 

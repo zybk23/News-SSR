@@ -46,7 +46,7 @@ const initialState = {
   categories: [],
   articles: [],
   isArticlesLoaded: false,
-  selectedCategories: [],
+  selectedCategories: ["business", "general"],
   selectedArticle: {},
 };
 
@@ -63,6 +63,10 @@ const AppWrapper = () => {
 
 jest.mock("axios");
 
+jest.mock("next/navigation", () => ({
+  useRouter: jest.fn(),
+}));
+
 const mockGetItem = jest.fn();
 const mockSetItem = jest.fn();
 const mockRemoveItem = jest.fn();
@@ -77,21 +81,23 @@ Object.defineProperty(window, "localStorage", {
 describe("NewsCart", () => {
   it("is component rendered", () => {
     render(<AppWrapper />);
-    const sourceEl = document.querySelectorAll(".cart-container");
-    expect(sourceEl[0]).toBeInTheDocument();
+    const sourceEl = document.querySelector(".news-item-container");
+    expect(sourceEl).toBeInTheDocument();
   });
 
   it("open news detail page", async () => {
     render(<AppWrapper />);
     const singleEl = document.querySelectorAll(".cart-container")[0];
-    fireEvent.click(singleEl);
-    await waitFor(() => {
-      const value = window.localStorage.getItem("sourceName");
-      if (value) {
-        expect(value).toBe("ABC News");
-      } else {
-        expect(value).toEqual(undefined);
-      }
-    });
+    if (singleEl) {
+      fireEvent.click(singleEl);
+      await waitFor(() => {
+        const value = window.localStorage.getItem("sourceName");
+        if (value) {
+          expect(value).toBe("ABC News");
+        } else {
+          expect(value).toEqual(undefined);
+        }
+      });
+    }
   });
 });

@@ -9,8 +9,9 @@ import { useAppDispatch, useAppSelector } from "../../store/hooks";
 const Filters = ({ categories }: { categories: categoriesTypes[] }) => {
   const dispatch = useAppDispatch();
 
-  const { selectedCategories }: { selectedCategories: string[] } =
-    useAppSelector((state) => state.dataSlice);
+  const selectedCategories: string[] = useAppSelector(
+    (state) => state?.dataSlice?.selectedCategories
+  );
 
   const handleSelectCategories = (name: string) => {
     dispatch(setSelectedCategories(name));

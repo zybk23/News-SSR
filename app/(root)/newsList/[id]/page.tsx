@@ -1,4 +1,4 @@
-import Articles from "@/components/Articles";
+import Articles from "../../../../components/Articles";
 import "../style.scss";
 import { getArticles } from "../../../../store/dataSlice";
 import store from "../../../../store";

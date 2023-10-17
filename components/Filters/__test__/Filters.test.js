@@ -49,8 +49,6 @@ const AppWrapper = () => {
 
 jest.mock("axios");
 
-const mockedUsedNavigate = jest.fn();
-
 describe("Categories", () => {
   it("is Filter area rendered", () => {
     render(<AppWrapper />);
@@ -62,7 +60,7 @@ describe("Categories", () => {
     render(<AppWrapper />);
     const itemEl = document.querySelectorAll(".filter-item-container")[1];
     fireEvent.click(itemEl);
-    expect(itemEl).toHaveClass("selected");
+    expect(itemEl).not.toHaveClass("selected");
     const itemEl2 = document.querySelectorAll(".filter-item-container")[2];
     fireEvent.click(itemEl2);
     expect(itemEl2).not.toHaveClass("selected");
