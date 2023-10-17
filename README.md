@@ -2,6 +2,12 @@
 
 ## with Jest, React Testing Library, TypeScript
 
+### Project starting
+
+run on terminal **npm install** for install all package 
+
+run on terminal **npm run dev** for starting application
+
 ---
 
 ### Author Links
