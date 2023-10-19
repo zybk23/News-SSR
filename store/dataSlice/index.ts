@@ -24,8 +24,11 @@ export const getArticles = createAsyncThunk(
   "data/getArticles",
   async (articleName: string) => {
     const response = await axios.get(
-      `${baseApiUrl}/top-headlines?q=${articleName}&apiKey=${apiKey}`
+      `${baseApiUrl}/top-headlines?sources=${articleName
+        .split(" ")
+        .join("-")}&apiKey=${apiKey}`
     );
+
     return response.data.articles;
   }
 );
